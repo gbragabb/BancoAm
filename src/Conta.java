@@ -2,13 +2,13 @@ import java.math.BigDecimal;
 
 public class Conta {
     private int codigo;
-    private static int total = 1;
+    private static int total = 0;
     private BigDecimal saldo = BigDecimal.ZERO;
     private Cliente titular;
     public Conta(){}
     public Conta(Cliente c){
         this.titular = c;
-        this.codigo = total++;
+        this.codigo = ++ total;
     }
 
     protected BigDecimal getSaldo() {
