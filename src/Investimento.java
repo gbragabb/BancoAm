@@ -1,15 +1,28 @@
 import java.math.BigDecimal;
 
 public class Investimento extends Conta implements Rentavel{
-    public Investimento(Cliente titular){
+    private BigDecimal taxa;
+
+    public Investimento(Cliente titular) {
         super(titular);
+
+        if (titular instanceof PJ) {
+            this.taxa = BigDecimal.valueOf(0.03);
+        } else {
+            this.taxa = BigDecimal.valueOf(0.01);
+        }
+    }
+
+    public BigDecimal getTaxa() {
+        return taxa;
+    }
+
+    public void setTaxa(BigDecimal taxa) {
+        this.taxa = taxa;
     }
 
     public void rende(){
-        if(super.getTitular().getClass() == PF.class)
-            super.depositar(super.getSaldo().multiply(BigDecimal.valueOf(0.01)));
-        else
-            super.depositar(super.getSaldo().multiply(BigDecimal.valueOf(0.03)));
+        super.depositar(super.getSaldo().multiply(this.taxa));
     }
 
     public void investir(){
