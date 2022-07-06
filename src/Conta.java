@@ -1,18 +1,22 @@
 import java.math.BigDecimal;
 
-public class Conta {
-    private int codigo;
-    private static int total = 0;
-    private BigDecimal saldo = BigDecimal.ZERO;
-    private Cliente titular;
-    public Conta(){}
+public abstract class Conta {
+    protected int codigo;
+    protected static int total = 0;
+    protected BigDecimal saldo = BigDecimal.ZERO;
+    protected Cliente titular;
+
     public Conta(Cliente c){
         this.titular = c;
         this.codigo = ++ total;
     }
 
-    protected BigDecimal getSaldo() {
+    public BigDecimal getSaldo() {
         return this.saldo;
+    }
+
+    public void setSaldo(BigDecimal saldo) {
+        this.saldo = saldo;
     }
 
     protected Cliente getTitular(){
