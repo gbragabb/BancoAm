@@ -31,11 +31,19 @@ public abstract class Conta {
         this.saldo = this.saldo.add(valor);
     }
     public void sacar(BigDecimal valor){
-        this.saldo = this.saldo.subtract(valor);
+        if (valor.compareTo(this.saldo) > 0) {
+            System.out.println("O valor do saque não pode ser superior ao saldo da conta!");
+        } else {
+            this.saldo = this.saldo.subtract(valor);
+        }
     }
 
     public void transferir(BigDecimal valor, Conta c){
-        c.depositar(valor);
-        this.saldo = this.saldo.subtract(valor);
+        if (valor.compareTo(this.saldo) > 0) {
+            System.out.println("O valor da transferência não pode ser superior ao saldo da conta!");
+        } else {
+            c.depositar(valor);
+            this.saldo = this.saldo.subtract(valor);
+        }
     }
 }
