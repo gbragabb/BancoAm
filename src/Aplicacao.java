@@ -10,7 +10,7 @@ public class Aplicacao {
 		String nome = sc.nextLine().trim();
 		
 		System.out.println("\nOlá " + nome + "! Vamos abrir sua conta?");
-		System.out.println("Digite o caracter referente ao tipo da pessoa: <F>ísica ou <J>urídica");
+		System.out.println("Digitem o caracter referente ao tipo da pessoa: <F>ísica ou <J>urídica");
 		char tipoPessoa = sc.nextLine().charAt(0);
 		
 		Cliente cliente = null;
